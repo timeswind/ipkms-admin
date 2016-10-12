@@ -47,6 +47,13 @@ router.map({
     },
     title: '控制台'
   },
+  '/login': {
+    name: 'login',
+    component: function (resolve) {
+      require(['./views/login.vue'], resolve)
+    },
+    title: '管理員登入'
+  },
   '/manage-account': {
     name: 'manage-account',
     component: function (resolve) {
@@ -90,6 +97,18 @@ router.map({
         title: '创建賬號'
       }
     }
+  }
+})
+
+router.beforeEach(function (transition) {
+  if (transition.to.path !== '/login') {
+    if (window.sessionStorage.token && window.sessionStorage.admin) {
+      transition.next()
+    } else {
+      router.go({name: 'login'})
+    }
+  } else {
+    transition.next()
   }
 })
 
