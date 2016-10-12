@@ -76,10 +76,7 @@ export default {
     deleteStudent: function (index, student_id, name) {
       console.log('prepare to delete')
       if (window.confirm('確定刪除 ' + name + ' 這個學生賬號?')) {
-        let data = {
-          student_id: student_id
-        }
-        this.$http.delete('/api/manage-account/students', data).then(function (response) {
+        this.$http.delete('/api/manage-account/students?studentid=' + student_id).then(function (response) {
           this.results.data.splice(index, 1)
           this.showToast('删除成功')
         }, function (response) {

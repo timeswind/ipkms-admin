@@ -76,10 +76,7 @@ export default {
     deleteTeacher: function (index, teacher_id) {
       console.log('prepare to delete')
       if (window.confirm('確定刪除？')) {
-        let data = {
-          teacher_id: teacher_id
-        }
-        this.$http.delete('/api/manage-account/teachers', data).then(function (response) {
+        this.$http.delete('/api/manage-account/teachers?teacherid=' + teacher_id).then(function (response) {
           this.results.data.splice(index, 1)
           this.showToast('删除成功')
         }, function (response) {
