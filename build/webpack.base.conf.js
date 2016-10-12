@@ -7,8 +7,8 @@ module.exports = {
     app: './src/main.js'
   },
   output: {
-    path: path.resolve(__dirname, '../dist/static'),
-    publicPath: '/static/admin-panel/',
+    path: path.resolve(__dirname, '../dist/'),
+    publicPath: '/',
     filename: '[name].js'
   },
   resolve: {
